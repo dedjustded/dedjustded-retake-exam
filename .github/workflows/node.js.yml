@@ -27,4 +27,4 @@ jobs:
           SOFTUNI_USERNAME: ${{ secrets.dedjustded }}
 
       - name: Build and Test
-        run: npm test
+        run: npm run test:ui
