@@ -38,5 +38,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: dedjustded_unit_tests
+        run: echo "DEDJUSTDED (UNIT TESTS): ${{ secrets.DEDJUSTDED_UNIT_TESTS }}"
+
       - name: Run Unit Tests
         run: npm run test:unit
