@@ -1,5 +1,4 @@
 name: CI test
-
 on:
   push:
     branches:
@@ -24,5 +23,20 @@ jobs:
       - name: dedjustded
         run: echo "DEDJUSTDED: ${{ secrets.DEDJUSTDED }}"
 
-      - name: Build and Test
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Unit Tests
         run: npm run test:unit
