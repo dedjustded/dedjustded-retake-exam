@@ -1,0 +1,32 @@
+name: CD to Render.com
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run test:ui
+
+      - name: Deploy to Render.com
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -H "Authorization: Bearer ${{ secrets.RENDER_TOKEN }}" \
+          -d '{"name":"dedjustded-retake-exam", "branch":"main"}' \
+          https://api.render.com/v1/services
