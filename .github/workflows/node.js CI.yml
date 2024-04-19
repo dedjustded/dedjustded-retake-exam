@@ -26,6 +26,7 @@ jobs:
 
       
   build-ui:
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
