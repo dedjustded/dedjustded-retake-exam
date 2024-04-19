@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:unit": "mocha -u tdd 'tests/unit/*.js'",
+    "test:unit": "npx mocha -u tdd 'tests/unit/*.js'",
     "test:ui": "npx playwright test",
     "start": "node index.js"
   },
