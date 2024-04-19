@@ -41,14 +41,14 @@ jobs:
       with:
         node-version: '18.x'
         cache: 'npm'
-    - name: Install dependencies
-      run: npm install
+    - name: Install dependencies and adjust permissions
+      run: |
+        npm install
+        chmod -R +x ./node_modules/.bin/
     - name: Setup Playwright
       uses: microsoft/playwright-github-action@v1
-    - name: Install firefox, maybe problem with browser type
-      run: npx playwright install chromium firefox webkit --with-deps
-    - name: Check browser binaries
-      run: ls -la ~/.cache/ms-playwright/
+    - name: Install Playwright browsers directly
+      run: ./node_modules/.bin/playwright install chromium firefox webkit --with-deps
     - name: Run UI tests
       run: npm run test:ui
 
