@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
@@ -25,8 +25,8 @@ jobs:
       run: echo "dedjustded"
 
       
-  ui-test:
-    needs: build
+  build-ui:
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
@@ -45,6 +45,7 @@ jobs:
       run: npm run test:ui
 
   deploy:
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
