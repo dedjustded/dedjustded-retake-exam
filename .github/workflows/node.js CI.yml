@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: run unit tests
-      run: npm run test:unit
+      run: npx mocha -u tdd 'tests/unit/*.js'
     - name: softuni username
       run: echo "dedjustded"
 
