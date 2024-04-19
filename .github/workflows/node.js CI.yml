@@ -45,8 +45,10 @@ jobs:
       run: npm install
     - name: Setup Playwright
       uses: microsoft/playwright-github-action@v1
-    - name: Verify and Install Browsers
-      run: npx playwright install --with-deps
+    - name: Install firefox, maybe problem with browser type
+      run: npx playwright install chromium firefox webkit --with-deps
+    - name: Check browser binaries
+      run: ls -la ~/.cache/ms-playwright/
     - name: Run UI tests
       run: npm run test:ui
 
